@@ -23,7 +23,6 @@ import { useSelector } from "react-redux";
 import { useToast } from "@/hooks/use-toast";
 import { isAuthenticated } from "@/auth/helpers";
 import CartSheet from "./CartSheet";
-import { API_URL } from "@/config";
 import { getCategories } from "./ApiCore";
 import { cn } from "@/lib/utils";
 
@@ -37,7 +36,7 @@ const NavBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const signout = () => {
-    fetch(`${API_URL}/signout`).then(() => {
+    fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/signout`).then(() => {
       toast({
         title: "User SignOut",
         className: "bg-black text-white",

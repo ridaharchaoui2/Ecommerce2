@@ -1,4 +1,3 @@
-import { API_URL } from "@/config";
 import queryString from "query-string";
 
 export const getProducts = (params) => {
@@ -27,14 +26,14 @@ export const getProducts = (params) => {
     }
   }
   let query = queryString.stringify(params);
-  return fetch(`${API_URL}/product?${query}`)
+  return fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/product?${query}`)
     .then((res) => res.json())
     .then((res) => res.products)
     .catch((err) => console.error(err));
 };
 
 export const getProduct = (id) => {
-  return fetch(`${API_URL}/product/${id}`, {
+  return fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/product/${id}`, {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -47,13 +46,16 @@ export const getProduct = (id) => {
 };
 
 export const relatedProducts = (id) => {
-  return fetch(`${API_URL}/product/related/${id}`, {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  })
+  return fetch(
+    `${import.meta.env.VITE_BACKEND_BASE_URL}/product/related/${id}`,
+    {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    }
+  )
     .then((res) => res.json())
     .then((res) => res.products)
     .catch((err) => console.error(err));
@@ -65,7 +67,7 @@ export const filterProducts = (skip, limit, filters) => {
     limit,
     filters,
   };
-  return fetch(`${API_URL}/product/search`, {
+  return fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/product/search`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -79,7 +81,7 @@ export const filterProducts = (skip, limit, filters) => {
 };
 
 export const getCategories = () => {
-  return fetch(`${API_URL}/category`, {
+  return fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/category`, {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -92,7 +94,7 @@ export const getCategories = () => {
 };
 
 export const getOrders = (userId, token) => {
-  return fetch(`${API_URL}/order/${userId}`, {
+  return fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/order/${userId}`, {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -107,15 +109,18 @@ export const getOrders = (userId, token) => {
 
 export const createOrder = async (userId, token, orderData) => {
   try {
-    const response = await fetch(`${API_URL}/order/create/${userId}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(orderData),
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND_BASE_URL}/order/create/${userId}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(orderData),
+      }
+    );
 
     const data = await response.json();
 
@@ -132,7 +137,9 @@ export const createOrder = async (userId, token, orderData) => {
 export const updateOrderStatus = async (orderId, userId, token, status) => {
   try {
     const response = await fetch(
-      `${API_URL}/order/${orderId}/status/${userId}`,
+      `${
+        import.meta.env.VITE_BACKEND_BASE_URL
+      }/order/${orderId}/status/${userId}`,
       {
         method: "PATCH",
         headers: {
@@ -160,15 +167,18 @@ export const processPayment = async (userId, token, paymentData) => {
   }
 
   try {
-    const response = await fetch(`${API_URL}/payment/stripe/${userId}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(paymentData),
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND_BASE_URL}/payment/stripe/${userId}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(paymentData),
+      }
+    );
 
     const data = await response.json();
     if (data.error) {
@@ -182,7 +192,7 @@ export const processPayment = async (userId, token, paymentData) => {
 };
 
 export const getUser = (id, token) => {
-  return fetch(`${API_URL}/user/${id}`, {
+  return fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/user/${id}`, {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -196,14 +206,17 @@ export const getUser = (id, token) => {
 };
 
 export const getUserOrders = (userId, token) => {
-  return fetch(`${API_URL}/order/user/${userId}`, {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  })
+  return fetch(
+    `${import.meta.env.VITE_BACKEND_BASE_URL}/order/user/${userId}`,
+    {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  )
     .then((res) => res.json())
     .then((res) => res.orders)
     .catch((err) => console.error(err));

@@ -17,7 +17,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
-import { API_URL } from "@/config";
 import { getCategories } from "@/core/ApiCore";
 import React, { useEffect, useState } from "react";
 import { Trash2 } from "lucide-react";
@@ -33,15 +32,18 @@ const Categories = () => {
   const submitCategory = (e) => {
     e.preventDefault();
     const { user, token } = isAuthenticated();
-    fetch(`${API_URL}/category/create/${user._id}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ name }),
-    })
+    fetch(
+      `${import.meta.env.VITE_BACKEND_BASE_URL}/category/create/${user._id}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ name }),
+      }
+    )
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {
@@ -71,14 +73,17 @@ const Categories = () => {
   };
   const handleDelete = (id) => {
     const { user, token } = isAuthenticated();
-    fetch(`${API_URL}/category/${id}/${user._id}`, {
-      method: "DELETE",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => {
+    fetch(
+      `${import.meta.env.VITE_BACKEND_BASE_URL}/category/${id}/${user._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    ).then((res) => {
       if (res.status === 204) {
         toast({
           title: "Category deleted successfully",

@@ -14,7 +14,6 @@ import {
 } from "@/redux/cartSlice";
 import { Minus, Plus, Trash, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "@/config";
 import { Separator } from "@/components/ui/separator";
 
 const CartSheet = ({ open, onClose }) => {
@@ -45,7 +44,9 @@ const CartSheet = ({ open, onClose }) => {
                   <div className="flex items-center justify-between py-4">
                     <div className="flex items-center space-x-4">
                       <img
-                        src={`${API_URL}/product/photo/${item._id}`}
+                        src={`${
+                          import.meta.env.VITE_BACKEND_BASE_URL
+                        }/product/photo/${item._id}`}
                         alt={item.name}
                         className="w-12 h-12 rounded-md"
                       />

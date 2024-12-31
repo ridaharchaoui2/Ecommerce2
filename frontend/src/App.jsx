@@ -4,7 +4,6 @@ import Signin from "./user/Signin";
 import Signup from "./user/Signup";
 import NavBar from "./core/NavBar";
 import Home from "./core/Home";
-import Shop from "./core/Shop";
 import AdminDashboard from "./user/AdminDashboard";
 import PrivateRoute from "./auth/PrivateRoute";
 import AdminRoute from "./auth/AdminRoute";
@@ -44,9 +43,6 @@ function App() {
                 >
                   <Route path="/" element={<PrivateRoute />}>
                     <Route path="" element={<Home />} />
-                  </Route>
-                  <Route path="/shop" element={<PrivateRoute />}>
-                    <Route path="" element={<Shop />} />
                   </Route>
                   <Route path="/checkout" element={<PrivateRoute />}>
                     <Route path="" element={<Checkout />} />

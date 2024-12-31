@@ -1,5 +1,4 @@
 import { isAuthenticated } from "@/auth/helpers";
-import { API_URL } from "@/config";
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -52,7 +51,7 @@ const Products = () => {
   const { toast } = useToast();
 
   const getCategories = () => {
-    fetch(`${API_URL}/category`, {
+    fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/category`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -92,14 +91,17 @@ const Products = () => {
     const { user, token } = isAuthenticated();
 
     try {
-      const res = await fetch(`${API_URL}/product/create/${user._id}`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_BASE_URL}/product/create/${user._id}`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
 
       const data = await res.json();
 
@@ -336,14 +338,19 @@ const Products = () => {
   const handleDelete = async (productId) => {
     try {
       const { user, token } = isAuthenticated();
-      const res = await fetch(`${API_URL}/product/${productId}/${user._id}`, {
-        method: "DELETE",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_BASE_URL}/product/${productId}/${
+          user._id
+        }`,
+        {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (res.status === 204) {
         // Update both states to remove deleted product
@@ -398,7 +405,9 @@ const Products = () => {
                   <TableRow key={product._id}>
                     <TableCell>
                       <img
-                        src={`${API_URL}/product/photo/${product._id}`}
+                        src={`${
+                          import.meta.env.VITE_BACKEND_BASE_URL
+                        }/product/photo/${product._id}`}
                         alt={product.name}
                         className="w-12 h-12 rounded-md"
                       />

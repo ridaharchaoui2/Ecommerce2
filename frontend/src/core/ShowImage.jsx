@@ -1,4 +1,3 @@
-import { API_URL } from "@/config";
 import React from "react";
 
 const ShowImage = ({ item, url, className }) => {
@@ -6,7 +5,7 @@ const ShowImage = ({ item, url, className }) => {
     <>
       <img
         className={className}
-        src={`${API_URL}/${url}/${item._id}`}
+        src={`${import.meta.env.VITE_BACKEND_BASE_URL}/${url}/${item._id}`}
         alt={`${item.name}`}
       />
     </>

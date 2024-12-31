@@ -11,7 +11,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import ShowImage from "./ShowImage";
-import { API_URL } from "@/config";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cartSlice";
 
@@ -23,7 +22,9 @@ const ProductCard = ({ product }) => {
         <CardHeader className="p-0">
           <div className="relative h-48 w-full">
             <img
-              src={`${API_URL}/product/photo/${product._id}`}
+              src={`${import.meta.env.VITE_BACKEND_BASE_URL}/product/photo/${
+                product._id
+              }`}
               alt={product.name}
               className="rounded-t-lg w-full h-full object-cover"
             />

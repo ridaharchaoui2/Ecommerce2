@@ -3,7 +3,6 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCartItem } from "@/redux/cartSlice";
 import { Button } from "@/components/ui/button";
-import { API_URL } from "@/config";
 import { isAuthenticated } from "@/auth/helpers";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProduct, relatedProducts } from "./ApiCore";
-import { API_URL } from "@/config";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cartSlice";
 import { Button } from "@/components/ui/button";
@@ -31,7 +30,9 @@ const ProductDetails = () => {
             {/* Product Image */}
             <div className="md:w-1/2">
               <img
-                src={`${API_URL}/product/photo/${product._id}`}
+                src={`${import.meta.env.VITE_BACKEND_BASE_URL}/product/photo/${
+                  product._id
+                }`}
                 alt={product.name}
                 width={600}
                 height={600}

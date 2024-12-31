@@ -8,7 +8,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { API_URL } from "@/config";
 import { Label } from "@radix-ui/react-label";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +28,7 @@ const Signup = () => {
 
   const submitSignin = (e) => {
     e.preventDefault();
-    fetch(`${API_URL}/signup`, {
+    fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/signup`, {
       method: "POST",
       headers: {
         Accept: "application/json",
