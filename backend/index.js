@@ -28,15 +28,33 @@ mongoose
 
 //Middlewares
 app.use(express.json());
+app.use(cookieParser());
 app.use(
   cors({
-    origin: ["https://ecommerce2-cxnh.vercel.app"],
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    origin: ["https://ecommerce2-cxnh.vercel.app", "http://localhost:5173"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-app.use(cookieParser());
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    status: "error",
+    message: err.message,
+  });
+});
+
+// Routes with error catching
+app.use("/api", (req, res, next) => {
+  try {
+    authRoutes(req, res, next);
+  } catch (err) {
+    next(err);
+  }
+});
 //Routes middleware
 app.use("/api", authRoutes);
 app.use("/api/user", userRoutes);
