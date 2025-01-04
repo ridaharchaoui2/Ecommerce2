@@ -43,9 +43,8 @@ function App() {
                       </>
                     }
                   >
-                    <Route path="/" element={<PrivateRoute />}>
-                      <Route path="" element={<Home />} />
-                    </Route>
+                    <Route path="/" element={<Home />} />
+
                     <Route path="/checkout" element={<PrivateRoute />}>
                       <Route path="" element={<Checkout />} />
                     </Route>
