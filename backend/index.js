@@ -25,26 +25,14 @@ mongoose
     });
   })
   .catch((error) => console.log(error));
-const allowedOrigins = [
-  'https://ecommerce2-cxnh.vercel.app',
-  'https://ecommerce2-woad-phi.vercel.app',
-  'https://ecommerce2-cxnh-43vk1ucv9-rayansamih46-gmailcoms-projects.vercel.app'
-];
+
 //Middlewares
 app.use(express.json());
 app.use(
   cors({
-    origin: function(origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        return callback(new Error('CORS not allowed'));
-      }
-      return callback(null, true);
-    },
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
+    origin: "*", // Allow all origins
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true, // Remove this if using `*` for origin
   })
 );
 app.use(cookieParser());
