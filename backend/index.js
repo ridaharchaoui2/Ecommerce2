@@ -29,30 +29,7 @@ mongoose
 //Middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(err.status || 500).json({
-    status: "error",
-    message: err.message || "Internal Server Error",
-  });
-});
-
-// Routes with error catching
-app.use("/api", (req, res, next) => {
-  try {
-    authRoutes(req, res, next);
-  } catch (err) {
-    next(err);
-  }
-});
+app.use(cors());
 //Routes middleware
 app.use("/api", authRoutes);
 app.use("/api/user", userRoutes);
