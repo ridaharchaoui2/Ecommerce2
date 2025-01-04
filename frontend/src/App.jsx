@@ -19,61 +19,64 @@ import Signout from "./user/Signout";
 import Profile from "./user/Profile";
 import MyOrders from "./user/MyOrders";
 import Footer from "./core/Footer";
+import { ThemeProvider } from "./components/theme-provider";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Public Routes with NavBar */}
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Public Routes with NavBar */}
 
-        <Route
-          path="*"
-          element={
-            <MainLayout>
-              <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <>
-                      <NavBar />
-                      <Outlet />
-                      <Footer />
-                    </>
-                  }
-                >
-                  <Route path="/" element={<PrivateRoute />}>
-                    <Route path="" element={<Home />} />
+          <Route
+            path="*"
+            element={
+              <MainLayout>
+                <Routes>
+                  <Route
+                    path="/"
+                    element={
+                      <>
+                        <NavBar />
+                        <Outlet />
+                        <Footer />
+                      </>
+                    }
+                  >
+                    <Route path="/" element={<PrivateRoute />}>
+                      <Route path="" element={<Home />} />
+                    </Route>
+                    <Route path="/checkout" element={<PrivateRoute />}>
+                      <Route path="" element={<Checkout />} />
+                    </Route>
+                    <Route path="/profile" element={<PrivateRoute />}>
+                      <Route path="" element={<Profile />} />
+                    </Route>
+                    <Route path="/myorders" element={<PrivateRoute />}>
+                      <Route path="" element={<MyOrders />} />
+                    </Route>
+                    <Route path="/signin" element={<Signin />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/product/:id" element={<ProductDetails />} />
                   </Route>
-                  <Route path="/checkout" element={<PrivateRoute />}>
-                    <Route path="" element={<Checkout />} />
-                  </Route>
-                  <Route path="/profile" element={<PrivateRoute />}>
-                    <Route path="" element={<Profile />} />
-                  </Route>
-                  <Route path="/myorders" element={<PrivateRoute />}>
-                    <Route path="" element={<MyOrders />} />
-                  </Route>
-                  <Route path="/signin" element={<Signin />} />
-                  <Route path="/signup" element={<Signup />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/product/:id" element={<ProductDetails />} />
-                </Route>
-              </Routes>
-            </MainLayout>
-          }
-        />
-        {/* Admin Routes without NavBar */}
-        <Route path={"/admin"} element={<AdminRoute />}>
-          <Route element={<Layout />}>
-            <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="category/create" element={<Categories />} />
-            <Route path="product/create" element={<Products />} />
-            <Route path="orders" element={<Orders />} />
-            <Route path="signout" element={<Signout />} />
+                </Routes>
+              </MainLayout>
+            }
+          />
+          {/* Admin Routes without NavBar */}
+          <Route path={"/admin"} element={<AdminRoute />}>
+            <Route element={<Layout />}>
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="category/create" element={<Categories />} />
+              <Route path="product/create" element={<Products />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="signout" element={<Signout />} />
+            </Route>
           </Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

@@ -12,6 +12,7 @@ import {
   X,
   LogOut,
 } from "lucide-react";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const sidebarNavItems = [
   {
@@ -61,7 +62,7 @@ export function Sidebar() {
           "fixed inset-y-0 left-0 z-40 w-72 transform transition-transform duration-200 ease-in-out",
           "lg:translate-x-0 lg:static lg:w-64",
           isOpen ? "translate-x-0" : "-translate-x-full",
-          "border-r bg-white dark:bg-white mt-0"
+          "border-r bg-background mt-0"
         )}
       >
         <div className="flex h-full max-h-screen flex-col gap-2">
@@ -102,6 +103,9 @@ export function Sidebar() {
               ))}
             </div>
           </ScrollArea>
+          <div className="border-t p-4">
+            <ModeToggle />
+          </div>
         </div>
       </div>
 

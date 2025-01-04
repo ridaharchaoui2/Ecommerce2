@@ -156,7 +156,7 @@ const Products = () => {
     return (
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogTrigger asChild>
-          <Button className="py-3 px-6 text-base font-semibold bg-primary text-white rounded-md hover:bg-primary/90">
+          <Button className="py-3 px-6 text-base font-semibold  rounded-md ">
             Add Product
           </Button>
         </DialogTrigger>
@@ -173,10 +173,7 @@ const Products = () => {
           <form onSubmit={submitProduct} className="space-y-3">
             {/* Photo Input */}
             <div className="space-y-2">
-              <label
-                htmlFor="photo"
-                className="block font-medium text-gray-700"
-              >
+              <label htmlFor="photo" className="block font-medium ">
                 Product Photo
               </label>
               <Input
@@ -191,7 +188,7 @@ const Products = () => {
 
             {/* Name Input */}
             <div className="space-y-2">
-              <label htmlFor="name" className="block font-medium text-gray-700">
+              <label htmlFor="name" className="block font-medium ">
                 Product Name
               </label>
               <Input
@@ -201,15 +198,13 @@ const Products = () => {
                 required
                 onChange={handleChange}
                 placeholder="Enter product name"
+                className="border-gray-300"
               />
             </div>
 
             {/* Description Input */}
             <div className="space-y-2">
-              <label
-                htmlFor="description"
-                className="block font-medium text-gray-700"
-              >
+              <label htmlFor="description" className="block font-medium ">
                 Product Description
               </label>
               <textarea
@@ -217,7 +212,7 @@ const Products = () => {
                 name="description"
                 required
                 onChange={handleChange}
-                className="p-3 border border-gray-300 rounded-md w-full"
+                className="p-3 border bg-background border-gray-300 rounded-md w-full"
                 placeholder="Enter product description"
               />
             </div>
@@ -225,10 +220,7 @@ const Products = () => {
             {/* Quantity and Price Inputs */}
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label
-                  htmlFor="quantity"
-                  className="block font-medium text-gray-700"
-                >
+                <label htmlFor="quantity" className="block font-medium ">
                   Quantity
                 </label>
                 <Input
@@ -238,13 +230,11 @@ const Products = () => {
                   required
                   onChange={handleChange}
                   placeholder="Enter quantity"
+                  className="border-gray-300"
                 />
               </div>
               <div className="space-y-2">
-                <label
-                  htmlFor="price"
-                  className="block font-medium text-gray-700"
-                >
+                <label htmlFor="price" className="block font-medium ">
                   Price
                 </label>
                 <Input
@@ -254,6 +244,7 @@ const Products = () => {
                   required
                   onChange={handleChange}
                   placeholder="Enter price"
+                  className="border-gray-300"
                 />
               </div>
             </div>
@@ -261,10 +252,7 @@ const Products = () => {
             {/* Category and Shipping Inputs */}
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label
-                  htmlFor="category"
-                  className="block font-medium text-gray-700"
-                >
+                <label htmlFor="category" className="block font-medium ">
                   Category
                 </label>
                 <select
@@ -272,7 +260,7 @@ const Products = () => {
                   name="category"
                   required
                   onChange={handleChange}
-                  className="p-3 border border-gray-300 rounded-md w-full"
+                  className="p-3 border bg-background border-gray-300 rounded-md w-full"
                 >
                   <option value="">Select a category</option>
                   {categories.map((category, index) => (
@@ -283,10 +271,7 @@ const Products = () => {
                 </select>
               </div>
               <div className="space-y-2">
-                <label
-                  htmlFor="shipping"
-                  className="block font-medium text-gray-700"
-                >
+                <label htmlFor="shipping" className="block font-medium ">
                   Shipping
                 </label>
                 <select
@@ -294,7 +279,7 @@ const Products = () => {
                   name="shipping"
                   required
                   onChange={handleChange}
-                  className="p-3 border border-gray-300 rounded-md w-full"
+                  className="p-3 border bg-background border-gray-300 rounded-md w-full"
                 >
                   <option value="false">No</option>
                   <option value="true">Yes</option>
@@ -306,7 +291,7 @@ const Products = () => {
             <DialogFooter>
               <Button
                 type="submit"
-                className="py-3 text-base font-semibold bg-primary text-white rounded-md hover:bg-primary/90"
+                className="py-3 text-base font-semibold bg-primary  rounded-md hover:bg-primary/90"
               >
                 Add Product
               </Button>
@@ -361,7 +346,6 @@ const Products = () => {
         toast({
           title: "Success",
           description: "Product deleted successfully",
-          className: "bg-black text-white",
         });
       }
     } catch (error) {
@@ -369,17 +353,16 @@ const Products = () => {
         variant: "destructive",
         title: "Error deleting product",
         description: error,
-        className: "bg-black text-white",
       });
     }
   };
   return (
     <>
       <div className="flex justify-center min-h-screen">
-        <Card className="w-full max-w-[1000px] mt-2 shadow-lg rounded-lg bg-white">
+        <Card className="w-full max-w-[1000px] mt-2 shadow-lg rounded-lg ">
           <CardHeader>
             <div className="flex justify-between items-center mb-4">
-              <CardTitle className="text-2xl font-extrabold text-gray-800">
+              <CardTitle className="text-2xl font-extrabold ">
                 Products
               </CardTitle>
               {addProductDialog()}

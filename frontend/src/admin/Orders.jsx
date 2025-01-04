@@ -78,12 +78,10 @@ const Orders = () => {
   return (
     <>
       <div className="flex justify-center ">
-        <Card className="w-full max-w-[1000px] mt-2 shadow-lg rounded-lg bg-white">
+        <Card className="w-full max-w-[1000px] mt-2 shadow-lg rounded-lg ">
           <CardHeader>
             <div className="flex justify-between items-center mb-4">
-              <CardTitle className="text-2xl font-extrabold text-gray-800">
-                Orders
-              </CardTitle>
+              <CardTitle className="text-2xl font-extrabold ">Orders</CardTitle>
             </div>
             {/* <ProductSearch onSearch={handleSearch} categories={categories} /> */}
           </CardHeader>
@@ -223,9 +221,7 @@ const Orders = () => {
             </div>
             <DialogFooter>
               <DialogClose asChild>
-                <Button type="button" className="bg-black text-white">
-                  Close
-                </Button>
+                <Button type="button">Close</Button>
               </DialogClose>
             </DialogFooter>
           </DialogContent>

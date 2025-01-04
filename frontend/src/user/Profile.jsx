@@ -203,9 +203,7 @@ const Profile = () => {
             </div>
             <DialogFooter>
               <DialogClose asChild>
-                <Button type="button" className="bg-black text-white">
-                  Close
-                </Button>
+                <Button type="button">Close</Button>
               </DialogClose>
             </DialogFooter>
           </DialogContent>

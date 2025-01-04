@@ -36,7 +36,7 @@ const ProductCard = ({ product }) => {
             <CardTitle className="text-lg font-semibold line-clamp-2">
               {product.name}
             </CardTitle>
-            <Badge variant="" className="text-xs bg-black text-white">
+            <Badge variant="" className="text-xs ">
               {product.category.name}
             </Badge>
           </div>

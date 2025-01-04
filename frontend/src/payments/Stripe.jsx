@@ -119,7 +119,7 @@ const StripeCheckout = ({ amount, onSuccess }) => {
       });
 
       dispatch(clearCartItem());
-      navigate("/shop");
+      navigate("/");
     } catch (err) {
       toast({
         variant: "destructive",
@@ -150,7 +150,7 @@ const StripeCheckout = ({ amount, onSuccess }) => {
               {method.icon}
               <div>
                 <h3 className="font-medium">{method.name}</h3>
-                <p className="text-sm text-gray-500">{method.description}</p>
+                <p className="text-sm ">{method.description}</p>
               </div>
             </div>
           </div>

@@ -101,12 +101,12 @@ const Categories = () => {
   return (
     <>
       <div className="flex flex-col items-center min-h-screen p-6">
-        <Card className="w-full max-w-[500px] md:max-w-[600px] shadow-lg rounded-lg bg-white mb-8">
+        <Card className="w-full max-w-[500px] md:max-w-[600px] shadow-lg rounded-lg  mb-8">
           <CardHeader className="space-y-2">
-            <CardTitle className="text-2xl font-extrabold text-gray-800">
+            <CardTitle className="text-2xl font-extrabold ">
               Add Category
             </CardTitle>
-            <CardDescription className="text-base text-gray-600">
+            <CardDescription className="text-base ">
               Enter a name for the new category.
             </CardDescription>
           </CardHeader>
@@ -121,7 +121,7 @@ const Categories = () => {
               />
               <Button
                 type="submit"
-                className="w-full py-3 text-base font-semibold bg-primary text-white rounded-md hover:bg-primary/90 focus:ring-2 focus:ring-primary/50 focus:outline-none"
+                className="w-full py-3 text-base font-semibold bg-primary  rounded-md hover:bg-primary/90 focus:ring-2 focus:ring-primary/50 focus:outline-none"
               >
                 Submit
               </Button>
@@ -129,9 +129,9 @@ const Categories = () => {
           </CardContent>
         </Card>
 
-        <Card className="w-full max-w-[800px] shadow-lg rounded-lg bg-white">
+        <Card className="w-full max-w-[800px] shadow-lg rounded-lg ">
           <CardHeader>
-            <CardTitle className="text-2xl font-extrabold text-gray-800">
+            <CardTitle className="text-2xl font-extrabold ">
               Categories
             </CardTitle>
           </CardHeader>

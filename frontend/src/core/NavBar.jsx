@@ -25,6 +25,7 @@ import { isAuthenticated } from "@/auth/helpers";
 import CartSheet from "./CartSheet";
 import { getCategories } from "./ApiCore";
 import { cn } from "@/lib/utils";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const NavBar = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -75,58 +76,61 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+    <nav className="fixed top-0 left-0 right-0 shadow-md z-50 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-bold text-gray-900">EShop</span>
+              <span className="text-2xl font-bold ">EShop</span>
             </Link>
-            <div className="hidden sm:ml-6 sm:flex">
-              <Select
-                id="category"
-                onValueChange={(value) =>
-                  handleChanges("category", value === "all" ? "" : value)
-                }
-              >
-                <SelectTrigger className="w-[200px]">
-                  <SelectValue placeholder="Select Category" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Categories</SelectItem>
-                  {categories.map((category) => (
-                    <SelectItem key={category._id} value={category._id}>
-                      {category.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+            {isAuthenticated() && (
+              <div className="hidden sm:ml-6 sm:flex">
+                <Select
+                  id="category"
+                  onValueChange={(value) =>
+                    handleChanges("category", value === "all" ? "" : value)
+                  }
+                >
+                  <SelectTrigger className="w-[200px]">
+                    <SelectValue placeholder="Select Category" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Categories</SelectItem>
+                    {categories.map((category) => (
+                      <SelectItem key={category._id} value={category._id}>
+                        {category.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
           </div>
           <div className="ml-4 flex items-center">
-            <Link
-              to="/"
-              className="text-gray-900 text-xl font-semibold hover:text-gray-600"
-            >
+            <Link to="/" className=" text-xl font-semibold hover:text-gray-600">
               Home
             </Link>
           </div>
+
           <div className="flex items-center">
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="hidden sm:block"
-            >
-              <div className="relative">
-                <Input
-                  type="search"
-                  name="search"
-                  placeholder="Search products..."
-                  className="w-full sm:w-64"
-                  value={searchData.search}
-                  onChange={handleChanges}
-                />
-              </div>
-            </form>
+            {isAuthenticated() && (
+              <form
+                onSubmit={(e) => e.preventDefault()}
+                className="hidden sm:block"
+              >
+                <div className="relative">
+                  <Input
+                    type="search"
+                    name="search"
+                    placeholder="Search products..."
+                    className="w-full sm:w-64"
+                    value={searchData.search}
+                    onChange={handleChanges}
+                  />
+                </div>
+              </form>
+            )}
+
             <div className="ml-4 flex items-center">
               <Button
                 variant="ghost"
@@ -151,13 +155,13 @@ const NavBar = () => {
               <>
                 <Link
                   to="/signin"
-                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                  className="px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Connexion
                 </Link>
                 <Link
                   to="/signup"
-                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                  className="  px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Register
                 </Link>
@@ -187,6 +191,7 @@ const NavBar = () => {
                 </DropdownMenu>
               </>
             )}
+            <ModeToggle />
             <div className="ml-4 sm:hidden">
               <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
                 <SheetTrigger asChild>

@@ -43,10 +43,8 @@ const ProductDetails = () => {
             {/* Product Details */}
             <div className=" md:w-1/2 mt-6 md:mt-0">
               <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-bold text-gray-900">
-                  {product.name}
-                </h1>
-                <Badge variant="" className="text-base bg-black text-white">
+                <h1 className="text-3xl font-bold ">{product.name}</h1>
+                <Badge variant="" className="text-base ">
                   {product.category?.name}
                 </Badge>
               </div>
@@ -54,9 +52,7 @@ const ProductDetails = () => {
               {/* Price */}
 
               <div className="flex justify-between items-start mb-2">
-                <p className="mt-2 text-2xl font-semibold text-gray-900">
-                  ${product.price}
-                </p>
+                <p className="mt-2 text-2xl font-semibold ">${product.price}</p>
                 <Badge variant="destructive" className="text-xs">
                   {product.quantity === 0
                     ? " - Out of Stock"
