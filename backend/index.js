@@ -31,16 +31,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-<<<<<<< HEAD
     origin: ["https://ecommerce2-cxnh.vercel.app", "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
-=======
-    origin: "*", // Allow all origins
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    credentials: true, // Remove this if using `*` for origin
->>>>>>> 14296b2010765ba4949b3059d639d7209c3c768e
   })
 );
 
