@@ -30,7 +30,10 @@ mongoose
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://ecommerce2-cxnh.vercel.app"],
+    origin: [
+      "https://ecommerce2-cxnh.vercel.app",
+      "https://ecommerce2-cxnh-43vk1ucv9-rayansamih46-gmailcoms-projects.vercel.app",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
   })
