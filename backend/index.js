@@ -29,12 +29,20 @@ mongoose
 //Middlewares
 app.use(express.json());
 app.use(
+<<<<<<< HEAD
   cors()
   // {
   //   origin: ["https://ecommerce2-cxnh.vercel.app"],
   //   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   //   credentials: true,
   // }
+=======
+  cors({
+    origin: ["https://ecommerce2-cxnh.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
+  })
+>>>>>>> b354d4aef357f51ef0a37ed75cd607eaba0589af
 );
 app.use(cookieParser());
 
