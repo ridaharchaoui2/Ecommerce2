@@ -157,13 +157,7 @@ const NavBar = () => {
                   to="/signin"
                   className="px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Connexion
-                </Link>
-                <Link
-                  to="/signup"
-                  className="  px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Register
+                  SignIn
                 </Link>
               </>
             ) : (

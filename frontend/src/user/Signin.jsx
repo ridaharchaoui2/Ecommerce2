@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 
 const Signin = () => {
@@ -104,6 +104,12 @@ const Signin = () => {
             Sign In
           </Button>
         </CardFooter>
+        <div className="text-center text-sm">
+          New here?{" "}
+          <Link to="/signup" className="  text-center text-blue-500">
+            Create an account
+          </Link>
+        </div>
       </Card>
     </div>
   );
